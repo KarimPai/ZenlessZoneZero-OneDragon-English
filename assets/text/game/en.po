@@ -1,5 +1,140 @@
 msgid ""
 msgstr ""
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=UTF-8\\n"
+"Content-Transfer-Encoding: 8bit\\n"
 
+# Initial English in-game OCR catalog.
+# msgid values must remain identical to the source strings used by OneDragon.
+# Verify each msgstr against the English game client before relying on OCR automation.
+
+msgid "出战"
+msgstr "Deploy"
+
+msgid "选择"
+msgstr "Select"
+
+msgid "确认"
+msgstr "Confirm"
+
+msgid "取消"
+msgstr "Cancel"
+
+msgid "返回"
+msgstr "Back"
+
+msgid "退出"
+msgstr "Exit"
+
+msgid "继续"
+msgstr "Continue"
+
+msgid "开始"
+msgstr "Start"
+
+msgid "完成"
+msgstr "Complete"
+
+msgid "领取"
+msgstr "Claim"
+
+msgid "挑战"
+msgstr "Challenge"
+
+msgid "前往"
+msgstr "Go"
+
+msgid "传送"
+msgstr "Teleport"
+
+msgid "地图"
+msgstr "Map"
+
+msgid "快捷手册"
+msgstr "Compendium"
+
+msgid "任务"
+msgstr "Missions"
+
+msgid "代理人"
+msgstr "Agents"
+
+msgid "装备"
+msgstr "Equipment"
+
+msgid "仓库"
+msgstr "Storage"
+
+msgid "设置"
+msgstr "Settings"
+
+msgid "商店"
+msgstr "Shop"
+
+msgid "战斗"
+msgstr "Combat"
+
+msgid "普通攻击"
+msgstr "Basic Attack"
+
+msgid "闪避"
+msgstr "Dodge"
+
+msgid "特殊技"
+msgstr "Special Attack"
+
+msgid "强化特殊技"
+msgstr "EX Special Attack"
+
+msgid "终结技"
+msgstr "Ultimate"
+
+msgid "连携技"
+msgstr "Chain Attack"
+
+msgid "支援"
+msgstr "Assist"
+
+msgid "确定"
+msgstr "OK"
+
+msgid "是"
+msgstr "Yes"
+
+msgid "否"
+msgstr "No"
+
+msgid "关闭"
+msgstr "Close"
+
+msgid "返回大世界"
+msgstr "Return to the overworld"
+
+msgid "大世界"
+msgstr "Overworld"
+
+msgid "实战模拟室"
+msgstr "Combat Simulation"
+
+msgid "式舆防卫战"
+msgstr "Shiyu Defense"
+
+msgid "恶名狩猎"
+msgstr "Notorious Hunt"
+
+msgid "零号空洞"
+msgstr "Hollow Zero"
+
+msgid "迷失之地"
+msgstr "Lost Void"
+
+msgid "咖啡"
+msgstr "Coffee"
+
+msgid "拉面"
+msgstr "Noodles"
+
+msgid "加载中"
+msgstr "Loading"
+
+msgid "请稍候"
+msgstr "Please wait"
