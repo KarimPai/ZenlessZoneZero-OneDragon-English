@@ -314,6 +314,17 @@ def main() -> None:
 
     _ctx = ZContext()
 
+    # Set the UI language before constructing widgets. Context initialization
+    # runs asynchronously after the window is created, which is too late for
+    # translated labels in the initial interface.
+    from one_dragon.base.config.custom_config import UILanguageEnum
+    from one_dragon.utils import i18_utils
+
+    if _ctx.custom_config.ui_language == UILanguageEnum.AUTO.value.value:
+        i18_utils.detect_and_set_default_language()
+    else:
+        i18_utils.update_default_lang(_ctx.custom_config.ui_language)
+
     # 设置主题
     setTheme(Theme[_ctx.custom_config.theme.upper()])
 
