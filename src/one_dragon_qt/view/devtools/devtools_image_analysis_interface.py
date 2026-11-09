@@ -796,8 +796,8 @@ class DevtoolsImageAnalysisInterface(VerticalScrollInterface):
             center_hsv = hsv_result['center_hsv']
             diff_hsv = hsv_result['diff_hsv']
 
-            content += f"\nHSV中心: {center_hsv}"
-            content += f"\nHSV差值: {diff_hsv}"
+            content += gt('\nHSV中心: {center_hsv}').format(center_hsv=center_hsv)
+            content += gt('\nHSV差值: {diff_hsv}').format(diff_hsv=diff_hsv)
 
         # 显示结果
         InfoBar.success(

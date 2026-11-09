@@ -29,12 +29,12 @@ if __name__ == '__main__':
 
     # 延迟导入
     from one_dragon.base.operation.one_dragon_env_context import OneDragonEnvContext
-    from one_dragon.utils.i18_utils import detect_and_set_default_language, gt
+    from one_dragon.utils.i18_utils import gt, update_default_lang
     from zzz_od.gui.zzz_installer_window import ZInstallerWindow
 
     _ctx = OneDragonEnvContext()
     _ctx.installer_dir = str(installer_dir)
-    detect_and_set_default_language()
+    update_default_lang(picker_window.picker_interface.translator.language)
     w = ZInstallerWindow(_ctx, gt(f'{_ctx.project_config.project_name}-installer'))
     w.show()
     app.exec()

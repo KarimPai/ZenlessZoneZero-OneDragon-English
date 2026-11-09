@@ -58,8 +58,8 @@ class SettingEnvInterface(VerticalScrollInterface):
         basic_group = SettingCardGroup(gt('基础'))
 
         self.screenshot_method_opt = ComboBoxSettingCard(
-            icon=FluentIcon.CAMERA, title='截图方法',
-            options_enum=ScreenshotMethodEnum
+            icon=FluentIcon.CAMERA, title='截图方法', content='前台要求窗口无遮挡，后台要求窗口不被最小化',
+            options_enum=ScreenshotMethodEnum,
         )
         self.screenshot_method_opt.value_changed.connect(lambda: self.ctx.init_controller())
         basic_group.addSettingCard(self.screenshot_method_opt)
@@ -233,8 +233,8 @@ class SettingEnvInterface(VerticalScrollInterface):
         # 异步测速pip源，toast显示日志和结果
         self._pip_speed_thread = PipSourceSpeedTestThread(self.ctx)
         self._pip_speed_thread.log_signal.connect(lambda label, ms: self._show_info_bar(
-            title=f"测速：{label}",
-            content=f"耗时 {ms}ms",
+            title=gt('测速：{label}').format(label=label),
+            content=gt('耗时 {ms}ms').format(ms=ms),
             duration=2000
         ))
         def pip_result(label, ms, value):
@@ -242,7 +242,7 @@ class SettingEnvInterface(VerticalScrollInterface):
             self.pip_source_opt.setValue(value)
             self._show_info_bar(
                 title="测速结果",
-                content=f"已选择最快的Pip源：{label}（{ms}ms）",
+                content=gt('已选择最快的Pip源：{label}（{ms}ms）').format(label=label, ms=ms),
                 duration=3000
             )
         self._pip_speed_thread.result_signal.connect(pip_result)

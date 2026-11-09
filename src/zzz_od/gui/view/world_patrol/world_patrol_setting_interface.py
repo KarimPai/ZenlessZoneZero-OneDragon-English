@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from one_dragon.utils.i18_utils import gt
 from typing import TYPE_CHECKING
 
 from PySide6.QtWidgets import QHBoxLayout, QVBoxLayout, QWidget
@@ -196,7 +197,7 @@ class WorldPatrolSettingInterface(VerticalScrollInterface, GroupIdMixin):
         # finished 满额代表该轮已结束并已计入 completed_rounds，取模避免与整轮重复计数
         partial = (len(self.run_record.finished) % per_round) / per_round if per_round > 0 else 0.0
         progress = min(self.run_record.completed_rounds + partial, total)
-        content = f'当日进度 {progress:.2f}/{total}'
+        content = gt('当日进度 {progress}/{total}').format(progress=f'{progress:.2f}', total=total)
         self.run_record_opt.setContent(content)
 
     def _on_reset_record_clicked(self) -> None:

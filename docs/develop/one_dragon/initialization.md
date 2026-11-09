@@ -49,3 +49,8 @@
 
 1. 创建 `ZContext`。
 2. 异步初始化 `ZContext.init_others`。
+## 英文界面资源
+
+英文分支使用 `assets/text/ui/en.po` 翻译界面，在构建窗口之前读取用户的语言设置。首次运行默认使用英语。新增设置项时保留原有配置值，在控件显示文字时调用 `gt()`。带变量的提示先翻译模板，再填入变量。游戏内文字识别使用独立的 `game` 词库。
+
+修改英文 PO 后，运行 `uv run python src/one_dragon/devtools/compile_po.py` 并提交相应的英文 MO 文件。运行时从 `assets/text/output/en/LC_MESSAGES` 加载词库。

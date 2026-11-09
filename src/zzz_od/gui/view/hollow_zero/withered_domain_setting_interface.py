@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from one_dragon.utils.i18_utils import gt
 from typing import TYPE_CHECKING
 
 from PySide6.QtWidgets import QHBoxLayout, QVBoxLayout, QWidget
@@ -166,7 +167,7 @@ class WitheredDomainSettingInterface(VerticalScrollInterface, GroupIdMixin):
         elif self.run_record.no_eval_point:
             content = '已完成刷取业绩 如错误可重置'
         else:
-            content = f'通关次数 本日: {self.run_record.daily_run_times}, 本周: {self.run_record.weekly_run_times}'
+            content = gt('通关次数 本日: {value1}, 本周: {value2}').format(value1=self.run_record.daily_run_times, value2=self.run_record.weekly_run_times)
         self.run_record_opt.setContent(content)
 
     def _update_mission_options(self) -> None:

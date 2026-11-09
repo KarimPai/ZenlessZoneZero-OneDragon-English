@@ -267,7 +267,7 @@ class PluginManageInterface(PluginOperationMixin, VerticalScrollInterface):
         preview_lines: list[str] = []
         for file_path, preview in previews:
             if preview is None:
-                preview_lines.append(f"• {Path(file_path).stem} (无法读取信息)")
+                preview_lines.append(gt('• {value1} (无法读取信息)').format(value1=Path(file_path).stem))
                 continue
 
             line = f"• {preview.plugin_name}"

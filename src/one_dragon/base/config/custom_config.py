@@ -37,7 +37,7 @@ class CustomConfig(YamlConfig):
         界面语言
         :return:
         """
-        return self.get('ui_language', UILanguageEnum.AUTO.value.value)
+        return self.get('ui_language', UILanguageEnum.EN.value.value)
 
     @ui_language.setter
     def ui_language(self, new_value: str) -> None:

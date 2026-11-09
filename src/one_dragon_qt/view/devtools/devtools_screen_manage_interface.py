@@ -77,7 +77,7 @@ def _parse_rect(text: str) -> Rect:
     stripped = text.strip().strip('()[]')
     parts = [p.strip() for p in stripped.split(',')]
     if len(parts) != 4:
-        raise ValueError(f'需要 4 个坐标值，实际: {len(parts)} 个')
+        raise ValueError(gt('需要 4 个坐标值，实际: {value1} 个').format(value1=len(parts)))
     return Rect(*(int(p) for p in parts))
 
 
@@ -89,7 +89,7 @@ def _parse_color_range(text: str) -> list[list[int]] | None:
     if (isinstance(val, list) and len(val) == 2
             and all(isinstance(v, list) and len(v) == 3 for v in val)):
         return val
-    raise ValueError(f'需要 [[r,g,b],[r,g,b]]，实际: {val}')
+    raise ValueError(gt('需要 [[r,g,b],[r,g,b]]，实际: {val}').format(val=val))
 
 
 AREA_TYPE_LABEL_MAP: dict[ScreenAreaType, str] = {
@@ -109,7 +109,7 @@ def _parse_area_type(text: str) -> ScreenAreaType:
     for area_type, label in AREA_TYPE_LABEL_MAP.items():
         if stripped in (area_type.value, label):
             return area_type
-    raise ValueError(f'未知区域类型: {text}')
+    raise ValueError(gt('未知区域类型: {text}').format(text=text))
 
 
 def _format_area_type(area_type: ScreenAreaType | str) -> str:

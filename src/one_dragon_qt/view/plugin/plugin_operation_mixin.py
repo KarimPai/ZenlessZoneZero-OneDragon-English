@@ -763,7 +763,7 @@ class PluginOperationMixin:
             try:
                 # 下载期间插件可能已被启动，覆盖前在写锁内再确认一次
                 if package_dir is not None and self.is_plugin_running(package_dir):
-                    raise RuntimeError(f'插件正在运行，请先停止后再{action_name}')
+                    raise RuntimeError(gt('插件正在运行，请先停止后再{action_name}').format(action_name=action_name))
                 result = self.plugin_import_service.import_plugin(archive, overwrite=overwrite)
             finally:
                 _plugin_write_lock.release()

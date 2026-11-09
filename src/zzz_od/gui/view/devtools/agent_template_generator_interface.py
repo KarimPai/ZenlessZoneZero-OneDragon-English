@@ -660,7 +660,7 @@ class AgentTemplateGeneratorInterface(VerticalScrollInterface):
             template.save_mask()
             return True
         except Exception:
-            log.error(f'保存模板失败 {step.sub_dir}/{template.template_id}', exc_info=True)
+            log.error(gt('保存模板失败 {value1}/{value2}').format(value1=step.sub_dir, value2=template.template_id), exc_info=True)
             return False
 
     def _save_all(self) -> None:

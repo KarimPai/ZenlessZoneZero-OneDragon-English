@@ -295,10 +295,10 @@ except Exception:
 def main() -> None:
     if _init_error is not None:
         # 显示错误弹窗，询问用户是否打开排障文档
-        error_message = f"启动一条龙失败,报错信息如下:\n{stack_trace}\n\n是否打开排障文档查看解决方案?"
+        error_message = f"OneDragon could not start:\n{stack_trace}\n\nOpen the troubleshooting guide?"
         # MB_ICONERROR | MB_OKCANCEL = 0x10 | 0x01 = 0x11
         # 返回值: IDOK = 1, IDCANCEL = 2
-        result = ctypes.windll.user32.MessageBoxW(0, error_message, "错误", 0x11)
+        result = ctypes.windll.user32.MessageBoxW(0, error_message, "OneDragon", 0x11)
 
         # 如果用户点击确定，则打开排障文档
         if result == 1:  # IDOK

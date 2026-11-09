@@ -214,7 +214,7 @@ class PredefinedTeamInterface(SplitAppRunInterface):
             '点击「开始」后将自动打开游戏内预备编队页面，\n'
             '通过截图识别各编队中的代理人并填入左侧配置。'
         )
-        w = MessageBox(gt('使用说明'), content, self.window())
+        w = MessageBox(gt('使用说明'), gt(content), self.window())
         w.cancelButton.hide()
         w.yesButton.setText(gt('确认'))
         w.exec()

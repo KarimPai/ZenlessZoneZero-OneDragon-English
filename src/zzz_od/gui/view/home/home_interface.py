@@ -1,3 +1,4 @@
+from one_dragon.utils.i18_utils import gt
 import contextlib
 from collections.abc import Callable
 from datetime import datetime, timedelta
@@ -390,7 +391,7 @@ class HomeInterface(BaseInterface):
         h2_layout.addStretch()
 
         # 启动游戏按钮布局
-        self.start_button = PillPushButton(FluentIcon.PLAY_SOLID, '启动一条龙')
+        self.start_button = PillPushButton(FluentIcon.PLAY_SOLID, gt('启动一条龙'))
         self.start_button.setObjectName("start_button")
         self.start_button.setFont(QFont("Microsoft YaHei", 16, QFont.Weight.Bold))
         self.start_button.setFixedHeight(48)
@@ -563,9 +564,9 @@ class HomeInterface(BaseInterface):
         self._ready = len(issues) == 0
         self._apply_button_icon()
         if self._ready:
-            self.start_button.setText('启动一条龙')
+            self.start_button.setText(gt('启动一条龙'))
         else:
-            self.start_button.setText(f'{len(issues)} 项待配置 ')
+            self.start_button.setText(gt('{value1} 项待配置 ').format(value1=len(issues)))
 
     def _find_widget_by_name(self, name: str) -> QWidget | None:
         stacked = self.main_window.stackedWidget

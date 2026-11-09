@@ -425,7 +425,7 @@ class ResourceUpdateCoordinator(QObject):
                 ResourceDownloadSpec(
                     resource_id=definition.config_key,
                     resource_type='model',
-                    title=f'{definition.display_name}模型',
+                    title=gt('{value1}模型').format(value1=definition.display_name),
                     current_version=(
                         ''
                         if update.current_files_missing

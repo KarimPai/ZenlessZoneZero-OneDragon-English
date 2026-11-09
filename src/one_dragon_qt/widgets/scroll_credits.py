@@ -1,3 +1,4 @@
+from one_dragon.utils.i18_utils import gt
 import os
 
 from PySide6.QtCore import Qt, QTimer
@@ -91,7 +92,7 @@ class ScrollCreditsWidget(QWidget):
         self.content_layout.addWidget(self.title_label)
 
         # 子标题
-        self.subtitle_label = QLabel("特别鸣谢")
+        self.subtitle_label = QLabel(gt("特别鸣谢"))
         self.subtitle_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.subtitle_label.setStyleSheet(f"""
             QLabel {{
@@ -113,7 +114,7 @@ class ScrollCreditsWidget(QWidget):
         self.content_layout.addWidget(self.credits_container)
 
         # 结尾标语
-        self.end_label = QLabel("感谢您的支持与陪伴")
+        self.end_label = QLabel(gt("感谢您的支持与陪伴"))
         self.end_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.end_label.setStyleSheet(f"""
             QLabel {{
@@ -150,7 +151,7 @@ class ScrollCreditsWidget(QWidget):
 
             if not os.path.exists(contributors_file):
                 # 如果文件不存在，显示提示
-                no_file_label = QLabel("contributors.yaml文件不存在")
+                no_file_label = QLabel(gt("contributors.yaml文件不存在"))
                 no_file_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
                 no_file_label.setStyleSheet("""
                     QLabel {
@@ -252,7 +253,7 @@ class ScrollCreditsWidget(QWidget):
 
             # 如果没有贡献者信息，显示提示
             if not all_contributors:
-                no_data_label = QLabel("未获取到贡献者信息")
+                no_data_label = QLabel(gt("未获取到贡献者信息"))
                 no_data_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
                 no_data_label.setStyleSheet("""
                     QLabel {

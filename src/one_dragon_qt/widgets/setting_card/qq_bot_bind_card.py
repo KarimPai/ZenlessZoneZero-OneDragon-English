@@ -1,3 +1,4 @@
+from one_dragon.utils.i18_utils import gt
 import contextlib
 import threading
 from collections.abc import Callable
@@ -70,17 +71,17 @@ class QQBotBindRunner(QThread):
             self.result_signal.emit(self._is_group, openid, err)
         except Exception as e:
             log.error('QQ 官方机器人绑定异常', exc_info=True)
-            self.result_signal.emit(self._is_group, '', f'绑定失败：{e}')
+            self.result_signal.emit(self._is_group, '', gt('绑定失败：{e}').format(e=e))
 
     def _on_user_verify_code(self, code: str) -> None:
         """单聊的验证码提示：让用户私聊机器人发出去"""
-        msg = f'验证码 {code}，请用手机 QQ 私聊机器人发送'
+        msg = gt('验证码 {code}，请用手机 QQ 私聊机器人发送').format(code=code)
         self.status_signal.emit(msg)
         self.verify_signal.emit(msg)
 
     def _on_group_verify_code(self, code: str) -> None:
         """群聊的验证码提示：拉进群或在群里 @机器人 发出去"""
-        msg = f'验证码 {code}，请把机器人拉进群或在群里 @机器人 发送'
+        msg = gt('验证码 {code}，请把机器人拉进群或在群里 @机器人 发送').format(code=code)
         self.status_signal.emit(msg)
         self.verify_signal.emit(msg)
 
@@ -111,11 +112,11 @@ class QQBotBindCard(MultiPushSettingCard):
         self._runner: QQBotBindRunner | None = None
         self._verify_bar: InfoBar | None = None
 
-        self.bind_user_btn = PushButton(text='绑定单聊', icon=FluentIcon.PEOPLE)
+        self.bind_user_btn = PushButton(text=gt('绑定单聊'), icon=FluentIcon.PEOPLE)
         self.bind_user_btn.clicked.connect(lambda: self._start_bind(False))
-        self.bind_group_btn = PushButton(text='绑定群聊', icon=FluentIcon.PEOPLE)
+        self.bind_group_btn = PushButton(text=gt('绑定群聊'), icon=FluentIcon.PEOPLE)
         self.bind_group_btn.clicked.connect(lambda: self._start_bind(True))
-        self.cancel_btn = PushButton(text='取消', icon=FluentIcon.CANCEL)
+        self.cancel_btn = PushButton(text=gt('取消'), icon=FluentIcon.CANCEL)
         self.cancel_btn.clicked.connect(self._cancel_bind)
         self.cancel_btn.setVisible(False)
 
@@ -152,7 +153,7 @@ class QQBotBindCard(MultiPushSettingCard):
         self._runner.result_signal.connect(self._on_bind_result)
         self._runner.finished.connect(self._on_bind_finished)
         self._set_binding(True)
-        self.setContent('正在连接 QQ 网关…')
+        self.setContent(gt('正在连接 QQ 网关…'))
         self._runner.start()
 
     def _cancel_bind(self) -> None:
@@ -176,7 +177,7 @@ class QQBotBindCard(MultiPushSettingCard):
         """验证码另弹一条不自动消失的提示，卡片里那行灰色小字容易被忽略"""
         self._close_verify_bar()
         self._verify_bar = InfoBar.warning(
-            title='绑定 QQ 机器人',
+            title=gt('绑定 QQ 机器人'),
             content=msg,
             isClosable=True,
             duration=-1,
@@ -191,7 +192,7 @@ class QQBotBindCard(MultiPushSettingCard):
             return
 
         target = '群聊' if is_group else '单聊'
-        self.setContent(f'绑定成功，已自动填入{target} OpenID')
+        self.setContent(gt('绑定成功，已自动填入{target} OpenID').format(target=target))
         self.openid_bound.emit(is_group, openid)
 
     def _on_bind_finished(self) -> None:
